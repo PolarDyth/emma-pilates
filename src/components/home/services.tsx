@@ -41,10 +41,11 @@ export default function Services() {
               <CardContent className="space-y-4">
                 <div className="h-48 relative rounded-md overflow-hidden">
                   <Image
-                    src="/placeholder.svg"
+                    src="/pilates/group-standing-up.jpeg"
                     alt="Group Pilates Class"
+                    className="object-cover object-center"
                     fill
-                    className="object-cover"
+                    unoptimized
                   />
                 </div>
                 <div className="space-y-2">
@@ -85,9 +86,10 @@ export default function Services() {
               <CardContent className="space-y-4">
                 <div className="h-48 relative rounded-md overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=400&width=600&query=private pilates session with instructor and client"
+                    src="/emma/down-stretch.jpeg"
                     alt="Private Pilates Session"
                     fill
+                    unoptimized
                     className="object-cover"
                   />
                 </div>
@@ -125,9 +127,10 @@ export default function Services() {
               <CardContent className="space-y-4">
                 <div className="h-48 relative rounded-md overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=400&width=600&query=corporate pilates class in office setting"
+                    src="/pilates/group-together.jpeg"
                     alt="Corporate Pilates"
                     fill
+                    unoptimized
                     className="object-cover"
                   />
                 </div>

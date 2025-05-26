@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/placeholder.svg"
+              src="/emma/emma-sunset.jpeg"
               alt="Sophia's Pilates Studio"
               fill
               priority

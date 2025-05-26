@@ -9,7 +9,7 @@ export default function AboutHome() {
               <div>
                 <div className="relative h-[500px] rounded-lg overflow-hidden">
                   <Image
-                    src="/placeholder.svg"
+                    src="/emma/emma-black-white.jpeg"
                     alt="Emma - Pilates Instructor"
                     fill
                     className="object-cover"
