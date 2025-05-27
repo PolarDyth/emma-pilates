@@ -202,93 +202,100 @@ export default function Timetable() {
 
   return (
     <section id="timetable" className="py-16 md:py-24 bg-accent/30">
-      <div className="container mx-auto">
-        <div>
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
-              Schedule
+      <div className="mx-10 md:mx-0">
+        <div className="container mx-auto">
+          <div>
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
+                Schedule
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-dark">
+                Class Timetable
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Find a class that fits your schedule and experience level. No
+                online booking required - simply contact me to reserve your
+                spot.
+              </p>
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-dark">
-              Class Timetable
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Find a class that fits your schedule and experience level. No
-              online booking required - simply contact me to reserve your spot.
-            </p>
           </div>
-        </div>
 
-        <div>
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <Tabs defaultValue="monday" className="w-full">
-              {" "}
-              <div className="border-b">
-                <div className="container mx-auto p-0">
-                  <TabsList className="justify-start w-full h-auto p-0 bg-transparent">
-                    {timetableData.map((dayData) => (
-                      <TabsTrigger
-                        key={dayData.day}
-                        value={dayData.day}
-                        className="py-3 px-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none transition-all duration-200"
-                      >
-                        {dayData.displayName}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                </div>
-              </div>{" "}
-              {timetableData.map((dayData) => (
-                <TabsContent
-                  key={dayData.day}
-                  value={dayData.day}
-                  className="p-6 animate-in fade-in-50 duration-300"
-                >
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {dayData.classes.map((classInfo, index) => (
-                      <div
-                        key={index}
-                        className={`p-4 rounded-lg border transition-all duration-300 hover:shadow-md hover:scale-[1.02] ${getLevelColor(
-                          classInfo.level
-                        )}`}
-                      >
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-medium">{classInfo.time}</span>
-                          <span
-                            className={`text-sm font-medium px-2 py-1 rounded-full bg-white ${getLevelTextColor(
-                              classInfo.level
-                            )}`}
+          <div>
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <Tabs defaultValue="monday" className="w-full">
+                {" "}
+                <div className="border-b">
+                  <div className="container mx-auto p-0">
+                    <div className="overflow-x-auto scrollbar-hide">
+                      <TabsList className="justify-start w-max min-w-full h-auto p-0 bg-transparent flex-nowrap">
+                        {timetableData.map((dayData) => (
+                          <TabsTrigger
+                            key={dayData.day}
+                            value={dayData.day}
+                            className="py-3 px-3 md:px-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none transition-all duration-200 whitespace-nowrap flex-shrink-0"
                           >
-                            {classInfo.level}
-                          </span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          {classInfo.classType}
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                          {classInfo.spotsAvailable} spots available
-                        </p>
-                      </div>
-                    ))}
+                            {dayData.displayName}
+                          </TabsTrigger>
+                        ))}
+                      </TabsList>
+                    </div>
                   </div>
-                </TabsContent>
-              ))}
-            </Tabs>
+                </div>{" "}
+                {timetableData.map((dayData) => (
+                  <TabsContent
+                    key={dayData.day}
+                    value={dayData.day}
+                    className="p-6 animate-in fade-in-50 duration-300"
+                  >
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {dayData.classes.map((classInfo, index) => (
+                        <div
+                          key={index}
+                          className={`p-4 rounded-lg border transition-all duration-300 hover:shadow-md hover:scale-[1.02] ${getLevelColor(
+                            classInfo.level
+                          )}`}
+                        >
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-medium">
+                              {classInfo.time}
+                            </span>
+                            <span
+                              className={`text-sm font-medium px-2 py-1 rounded-full bg-white ${getLevelTextColor(
+                                classInfo.level
+                              )}`}
+                            >
+                              {classInfo.level}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            {classInfo.classType}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {classInfo.spotsAvailable} spots available
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <div className="mt-8 text-center">
-            <p className="text-muted-foreground mb-4">
-              Private 1-to-1 sessions are available by appointment. Please
-              contact me to schedule.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild variant="outline">
-                <Link href="#contact">Contact for Booking</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/timetable">View Full Timetable</Link>
-              </Button>
+          <div>
+            <div className="mt-8 text-center">
+              <p className="text-muted-foreground mb-4">
+                Private 1-to-1 sessions are available by appointment. Please
+                contact me to schedule.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild variant="outline">
+                  <Link href="#contact">Contact for Booking</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/timetable">View Full Timetable</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

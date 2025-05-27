@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24 bg-accent/30">
+      <div className="mx-10 md:mx-0">
       <div className="container mx-auto">
         <div>
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -26,6 +27,14 @@ export default function Services() {
               Whether you&apos;re new to Pilates or looking to deepen your
               practice, I offer a range of services to meet your needs.
             </p>
+            <div className="mt-6 text-center">
+              <blockquote className="text-xl italic text-primary font-medium">
+                &quot;Change happens through movement and movement heals&quot;
+              </blockquote>
+              <cite className="text-sm text-muted-foreground mt-2">
+                — Joseph Pilates
+              </cite>
+            </div>
           </div>
         </div>
 
@@ -166,6 +175,7 @@ export default function Services() {
             </Button>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
