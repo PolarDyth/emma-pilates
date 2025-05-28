@@ -18,16 +18,17 @@ export default function Hero() {
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30 sm:bg-black/20"></div>
       </div>
-
       {/* Content Container */}
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="container relative z-10 py-8 sm:py-16 md:py-20 lg:py-24 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[70vh]">
             {/* Award Badge - Mobile: Above text, Desktop: Right Side */}
-            <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-start">
+            <div className="lg:col-span-5 flex justify-center">
               <div className="relative">
                 {/* Award Badge - Responsive sizes */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-full p-4 sm:p-6 lg:p-8 shadow-xl border-4 border-primary/20 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 flex flex-col items-center justify-center text-center">                  {/* Laurel Wreaths - Responsive SVG */}
+                <div className="bg-white/95 backdrop-blur-sm rounded-full p-4 sm:p-6 lg:p-8 shadow-xl border-4 border-primary/20 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 flex flex-col items-center justify-center text-center">
+                  {" "}
+                  {/* Laurel Wreaths - Responsive SVG */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg
                       className="w-full h-full text-primary/30"
@@ -64,25 +65,30 @@ export default function Hero() {
                       />
                     </svg>
                   </div>
-
                   {/* Badge Content - Responsive text sizes */}
                   <div className="relative z-10 space-y-0.5 sm:space-y-1">
                     <div className="text-[10px] sm:text-xs font-medium text-muted-foreground tracking-wider">
                       CERTIFIED
                     </div>
-                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-dark">ELITE</div>
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-dark">
+                      ELITE
+                    </div>
                     <div className="text-[10px] sm:text-xs font-medium text-muted-foreground">
                       TRAINER
                     </div>
                     <div className="text-xs sm:text-sm font-semibold text-primary">
                       Excellence
                     </div>
-                    <div className="text-sm sm:text-base lg:text-lg font-bold text-dark">2024</div>
+                    <div className="text-sm sm:text-base lg:text-lg font-bold text-dark">
+                      2024
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>            {/* Main Content - Mobile: Below badge, Desktop: Left Side */}
-            <div className="lg:col-span-7 order-2 lg:order-1 flex justify-center lg:justify-end">
+            </div>
+
+            {/* Main Content - Mobile: Below badge, Desktop: Left Side */}
+            <div className="lg:col-span-7 flex justify-center lg:justify-end">
               <div className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-12 rounded-lg shadow-xl w-full max-w-lg sm:max-w-xl lg:max-w-2xl">
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-dark leading-tight">
@@ -95,7 +101,11 @@ export default function Hero() {
                   </p>
 
                   <div className="pt-2 sm:pt-4">
-                    <Button asChild size="lg" className="w-full sm:w-auto text-sm sm:text-base">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full sm:w-auto text-sm sm:text-base"
+                    >
                       <Link href="#contact">BOOK YOUR SESSIONS TODAY</Link>
                     </Button>
                   </div>
@@ -122,7 +132,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>      {/* Scroll Indicator - Hidden on small screens */}
+      </div>{" "}
+      {/* Scroll Indicator - Hidden on small screens */}
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
         <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center opacity-80 hover:opacity-100 transition-opacity">
           <div className="w-1 h-2 sm:h-3 bg-white rounded-full mt-1.5 sm:mt-2 animate-bounce"></div>
