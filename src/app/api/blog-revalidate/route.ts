@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook'
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,31 +12,34 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 })
     }
 
-    // Get the secret from the request headers
-    const headerSecret = request.headers.get('sanity-webhook-secret')
-    
-    if (!headerSecret) {
-      console.error('No webhook secret provided in headers')
-      return NextResponse.json({ error: 'Unauthorized - No secret provided' }, { status: 401 })
+    // Get the raw body as text for signature validation
+    const body = await request.text()
+    const signature = request.headers.get(SIGNATURE_HEADER_NAME)
+
+    if (!signature) {
+      console.error('No webhook signature provided')
+      return NextResponse.json({ error: 'Unauthorized - No signature provided' }, { status: 401 })
     }
 
-    // Validate the webhook secret
-    if (headerSecret !== webhookSecret) {
-      console.error('Invalid webhook secret provided')
-      return NextResponse.json({ error: 'Unauthorized - Invalid secret' }, { status: 401 })
+    // Validate the webhook using Sanity's official package
+    const isValid = await isValidSignature(body, signature, webhookSecret)
+
+    if (!isValid) {
+      console.error('Invalid webhook signature')
+      return NextResponse.json({ error: 'Unauthorized - Invalid signature' }, { status: 401 })
     }
 
-    // Parse the webhook payload
-    const body = await request.json()
-    
+    // Parse the validated body
+    const parsedBody = JSON.parse(body)
+
     console.log('Sanity webhook received:', {
-      documentType: body._type,
-      documentId: body._id,
-      operation: body._operation || 'unknown'
+      documentType: parsedBody._type,
+      documentId: parsedBody._id,
+      operation: parsedBody._operation || 'unknown'
     })
 
     // Handle different document types
-    const documentType = body._type
+    const documentType = parsedBody._type
     
     if (documentType === 'blogPost') {
       // Revalidate blog-related pages
@@ -43,9 +47,9 @@ export async function POST(request: NextRequest) {
       revalidatePath('/blog/[slug]', 'page')
       
       // If we have a slug, revalidate the specific post
-      if (body.slug?.current) {
-        revalidatePath(`/blog/${body.slug.current}`)
-        console.log(`Revalidated blog post: /blog/${body.slug.current}`)
+      if (parsedBody.slug?.current) {
+        revalidatePath(`/blog/${parsedBody.slug.current}`)
+        console.log(`Revalidated blog post: /blog/${parsedBody.slug.current}`)
       }
       
       console.log('Revalidated blog pages')
