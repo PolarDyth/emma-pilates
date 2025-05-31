@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import BlogPostClient from "@/components/blog/blogPage/blog-post-client";
 
 interface BlogPostPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Generate static paths for all blog posts
