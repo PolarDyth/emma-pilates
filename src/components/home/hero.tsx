@@ -10,10 +10,10 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/emma/emma-sunset.jpeg"
-          alt="Sophia's Pilates Studio"
+          alt="Emma's Pilates Studio"
           fill
           priority
-          className="object-cover"
+          className="object-cover scale-125 -translate-x-40 object-center"
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30 sm:bg-black/20"></div>
