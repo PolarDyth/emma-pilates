@@ -181,22 +181,12 @@ export default function ClientLayout({
           )}        </AnimatePresence>
       </header>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={pathname}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ 
-            duration: 0.3, 
-            ease: [0.4, 0, 0.2, 1] 
-          }}
-          className="relative z-0"
-          onClick={() => mobileMenuOpen && setMobileMenuOpen(false)}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <div
+        className="relative z-0"
+        onClick={() => mobileMenuOpen && setMobileMenuOpen(false)}
+      >
+        {children}
+      </div>
 
       {/* Footer */}
       <Footer />
