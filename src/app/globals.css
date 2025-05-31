@@ -126,4 +126,34 @@
   body {
     @apply bg-background text-foreground;
   }
+  .prose h1 {
+    @apply text-5xl font-bold mt-8 mb-4;
+  }
+  .prose h2 {
+    @apply text-4xl font-bold mt-6 mb-3;
+  }
+  .prose h3 {
+    @apply text-3xl font-bold mt-4 mb-2;
+  }
+  .prose h4 {
+    @apply text-2xl font-semibold mt-4 mb-2;
+  }
+  .prose p {
+    @apply text-base mb-4 leading-relaxed;
+  }
+  .prose ul {
+    @apply list-disc ml-6 mb-4;
+  }
+  .prose ol {
+    @apply list-decimal ml-6 mb-4;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose strong {
+    @apply font-semibold;
+  }
+  .prose em {
+    @apply italic;
+  }
 }
