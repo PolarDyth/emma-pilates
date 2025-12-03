@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "overrides": {
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "glob": "^11.0.0"
   },
   "scripts": {
     "dev": "next dev --turbopack",

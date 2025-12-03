@@ -117,3 +117,68 @@ export const allSchedulesQuery = `
     }
   }
 `;
+
+// CLASS QUERIES
+export const allClassesQuery = `
+  *[_type == "class"] | order(title asc) {
+    _id,
+    title,
+    slug,
+    description,
+    level,
+    duration,
+    maxParticipants,
+    price,
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    },
+    category-> {
+      _id,
+      title
+    },
+    image {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    equipment,
+    benefits
+  }
+`;
+
+export const classBySlugQuery = `
+  *[_type == "class" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description,
+    level,
+    duration,
+    maxParticipants,
+    price,
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    },
+    category-> {
+      _id,
+      title
+    },
+    image {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    equipment,
+    benefits
+  }
+`;
