@@ -36,8 +36,8 @@ export default function ClientLayout({
             <NavLink href="/" active={pathname === "/"}>
               Home
             </NavLink>
-            <NavLink href="/about" active={pathname === "/about"}>
-              About
+            <NavLink href="/blog" active={pathname === "/about"}>
+              Blog
             </NavLink>
             <NavLink href="/#services" active={pathname.includes("#services")}>
               Services

@@ -81,3 +81,39 @@ export const blogPostsByCategoryQuery = `
     }
   }
 `;
+
+// SCHEDULE QUERIES
+export const allSchedulesQuery = `
+  *[_type == "schedule" && isActive == true] | order(isRecurring desc, oneTimeDate asc, startDate asc) {
+    _id,
+    title,
+    isRecurring,
+    oneTimeDate,
+    startDate,
+    endDate,
+    recurrencePattern,
+    daysOfWeek,
+    time,
+    customInterval,
+    customIntervalUnit,
+    location,
+    specialPrice,
+    maxParticipants,
+    notes,
+    exceptions[] {
+      date,
+      reason
+    },
+    class-> {
+      _id,
+      title,
+      level
+    },
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    }
+  }
+`;
