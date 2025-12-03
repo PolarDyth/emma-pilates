@@ -87,9 +87,10 @@ export default function NotFound() {
             className="relative w-full max-w-md h-[300px] rounded-2xl overflow-hidden shadow-xl mb-12"
           >
             <Image
-              src="/placeholder.svg?height=600&width=800&query=person doing pilates stretch looking confused"
+              src="/emma/emma-star-stretch.jpeg"
               alt="Page Not Found"
               fill
+              unoptimized
               priority
               className="object-cover"
             />

@@ -10,7 +10,7 @@ export default function Benefits() {
                 <div>
                   <div className="relative h-[400px] rounded-lg overflow-hidden">
                     <Image
-                      src="/placeholder.svg?height=800&width=600&query=woman doing pilates reformer exercise in studio with natural light"
+                      src="/emma/emma-rock.jpeg"
                       alt="Pilates Benefits"
                       fill
                       className="object-cover"
