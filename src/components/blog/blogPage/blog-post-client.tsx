@@ -241,7 +241,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                     <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
                     <nav className="space-y-3">
                       <Link href="/services" className="block text-sm text-gray-600 hover:text-primary transition-colors">
-                        Our Services
+                        Our Classes
                       </Link>
                       <Link href="/schedule" className="block text-sm text-gray-600 hover:text-primary transition-colors">
                         Class Schedule

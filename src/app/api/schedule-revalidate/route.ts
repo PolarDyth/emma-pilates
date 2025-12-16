@@ -22,7 +22,7 @@ export async function POST(request: Request) {
         const parsed = JSON.parse(body);
         const affectedTypes = ['schedule', 'class', 'author'];
         if (!parsed?._type || affectedTypes.includes(parsed._type)) {
-            revalidateTag('schedule');
+            revalidateTag('schedule', {});
         }
 
         return NextResponse.json({ revalidated: true });

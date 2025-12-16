@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
+import Link from "next/link"
 import { PilatesClass, getLevelDisplay, getLevelColor } from "@/lib/types/Class"
 import ClassCard from "./class-card"
 import { Button } from "@/components/ui/button"
@@ -248,7 +249,7 @@ export default function ServicesClientPage({ classes }: ServicesClientPageProps)
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-primary/25"
                   asChild
                 >
-                  <a href="/#contact">Book Free Consultation</a>
+                  <Link href="/#contact">Book Free Consultation</Link>
                 </Button>
                 <Button 
                   size="lg" 

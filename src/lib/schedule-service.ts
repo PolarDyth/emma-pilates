@@ -91,6 +91,39 @@ const dayToIndex: Record<string, number> = {
 	"sunday": 6,
 };
 
+function shouldShowRecurringEvent(schedule: ScheduleDocument, targetDate: Date): boolean {
+	const rawPattern = schedule.recurrencePattern || 'weekly';
+	const pattern = rawPattern.toLowerCase().replace('-', '');
+	const startDate = schedule.startDate ? new Date(schedule.startDate) : null;
+	
+	// If no start date set, default to today
+	const effectiveStartDate = startDate || new Date();
+
+	// Calculate weeks since start date
+	const startWeekStart = getStartOfWeek(effectiveStartDate);
+	const targetWeekStart = getStartOfWeek(targetDate);
+	const weeksDiff = Math.round((targetWeekStart.getTime() - startWeekStart.getTime()) / (7 * 24 * 60 * 60 * 1000));
+	
+	switch (pattern) {
+		case 'daily':
+		case 'weekly':
+			return true;
+		
+		case 'biweekly':
+			return weeksDiff >= 0 && weeksDiff % 2 === 0;
+		
+		case 'monthly':
+			const startDayOfMonth = effectiveStartDate.getDate();
+			const targetDayOfMonth = targetDate.getDate();
+			const startWeekOfMonth = Math.ceil(startDayOfMonth / 7);
+			const targetWeekOfMonth = Math.ceil(targetDayOfMonth / 7);
+			return startWeekOfMonth === targetWeekOfMonth;
+		
+		default:
+			return true;
+	}
+}
+
 export async function getCalendarWeek(weekAnchorISO: string): Promise<{ weekStartISO: string; events: EventsByDate }> {
 	const schedules = await getSchedules();
 	const anchor = new Date(weekAnchorISO);
@@ -105,18 +138,28 @@ export async function getCalendarWeek(weekAnchorISO: string): Promise<{ weekStar
 	for (const s of schedules) {
 		if (s.isRecurring) {
 			if (!s.daysOfWeek || !s.time) continue;
-			// check if event lands within this week
+			
+			// Check if event lands within this week
 			for (const day of s.daysOfWeek) {
 				const idx = dayToIndex[day];
 				if (idx === undefined) continue;
 				const date = addDays(weekStart, idx);
-				// respect startDate/endDate bounds
+				
+				// Respect startDate/endDate bounds
 				if (s.startDate && toDateOnly(date) < s.startDate) continue;
 				if (s.endDate && toDateOnly(date) > s.endDate) continue;
-				// TODO: extend for biweekly/monthly/custom; treat weekly/daily equivalent within week
+				
+				// Check if this occurrence should be shown based on recurrence pattern
+				if (!shouldShowRecurringEvent(s, date)) continue;
+				
+				// Check for exceptions (cancelled dates)
+				const dateStr = toDateOnly(date);
+				const isException = s.exceptions?.some(ex => ex.date === dateStr);
+				if (isException) continue;
+				
                 const event: CalendarEvent = {
-					id: `${s._id}-${toDateOnly(date)}`,
-					date: toDateOnly(date),
+					id: `${s._id}-${dateStr}`,
+					date: dateStr,
 					startTimeLabel: s.time,
 					title: s.title || s.class?.title || "Class",
                     level: s.class?.level,

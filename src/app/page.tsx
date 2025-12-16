@@ -7,6 +7,7 @@ import Services from "@/components/home/services";
 import Testimonials from "@/components/home/testimonials";
 import Timetable from "@/components/home/timetable";
 import AnimatedSection from "@/components/ui/animated-section";
+import { getClasses } from "@/lib/class-service";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -31,7 +32,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  // Fetch the first 3 classes for the homepage
+  const allClasses = await getClasses();
+  const featuredClasses = allClasses.slice(0, 3);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Hero />
@@ -40,7 +45,7 @@ export default function Page() {
       </AnimatedSection>
       <Pilates />
       <AnimatedSection delay={0.1}>
-        <Services />
+        <Services classes={featuredClasses} />
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
         <Timetable />
@@ -54,3 +59,6 @@ export default function Page() {
     </div>
   );
 }
+
+// Enable static generation with revalidation
+export const revalidate = 3600; // Revalidate every hour

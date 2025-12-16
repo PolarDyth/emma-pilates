@@ -31,10 +31,10 @@ export default function Footer() {
                 About Emma
               </Link>
               <Link
-                href="/#services"
+                href="/#classes"
                 className="text-white/80 hover:text-secondary transition-colors duration-200"
               >
-                Services
+                Classes
               </Link>
               <Link
                 href="/timetable"

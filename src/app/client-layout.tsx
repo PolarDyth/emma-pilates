@@ -39,8 +39,8 @@ export default function ClientLayout({
             <NavLink href="/blog" active={pathname === "/about"}>
               Blog
             </NavLink>
-            <NavLink href="/services" active={pathname.includes("#services")}>
-              Services
+            <NavLink href="/services" active={pathname.includes("#classes")}>
+              Classes
             </NavLink>
             <NavLink href="/timetable" active={pathname === "/timetable"}>
               Timetable
@@ -135,11 +135,11 @@ export default function ClientLayout({
                   About
                 </MobileNavLink>
                 <MobileNavLink 
-                  href="/#services" 
-                  active={pathname.includes("#services")}
+                  href="/classes" 
+                  active={pathname.includes("classes")}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Services
+                  Classes
                 </MobileNavLink>
                 <MobileNavLink 
                   href="/timetable" 

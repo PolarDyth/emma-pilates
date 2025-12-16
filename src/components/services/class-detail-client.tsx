@@ -163,7 +163,7 @@ export default function ClassDetailClient({ pilatesClass }: ClassDetailClientPro
                         className="border-primary text-primary hover:bg-primary hover:text-white rounded-xl py-6"
                         asChild
                       >
-                        <a href="/#contact">Contact for Info</a>
+                        <Link href="/#contact">Contact for Info</Link>
                       </Button>
                     </div>
                   </CardContent>

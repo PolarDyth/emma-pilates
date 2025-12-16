@@ -132,7 +132,7 @@ export default function NotFound() {
                 About Emma
               </Link>
               <Link href="/services" className="text-primary hover:underline">
-                Our Services
+                Our Classes
               </Link>
               <Link href="/timetable" className="text-primary hover:underline">
                 Class Schedule
