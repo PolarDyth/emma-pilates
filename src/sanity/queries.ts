@@ -81,3 +81,104 @@ export const blogPostsByCategoryQuery = `
     }
   }
 `;
+
+// SCHEDULE QUERIES
+export const allSchedulesQuery = `
+  *[_type == "schedule" && isActive == true] | order(isRecurring desc, oneTimeDate asc, startDate asc) {
+    _id,
+    title,
+    isRecurring,
+    oneTimeDate,
+    startDate,
+    endDate,
+    recurrencePattern,
+    daysOfWeek,
+    time,
+    customInterval,
+    customIntervalUnit,
+    location,
+    specialPrice,
+    maxParticipants,
+    notes,
+    exceptions[] {
+      date,
+      reason
+    },
+    class-> {
+      _id,
+      title,
+      level
+    },
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    }
+  }
+`;
+
+// CLASS QUERIES
+export const allClassesQuery = `
+  *[_type == "class"] | order(title asc) {
+    _id,
+    title,
+    slug,
+    description,
+    level,
+    duration,
+    maxParticipants,
+    price,
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    },
+    category-> {
+      _id,
+      title
+    },
+    image {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    equipment,
+    benefits
+  }
+`;
+
+export const classBySlugQuery = `
+  *[_type == "class" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description,
+    level,
+    duration,
+    maxParticipants,
+    price,
+    instructor-> {
+      name,
+      image {
+        asset-> { url }
+      }
+    },
+    category-> {
+      _id,
+      title
+    },
+    image {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    equipment,
+    benefits
+  }
+`;

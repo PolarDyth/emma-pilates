@@ -13,9 +13,10 @@ export default function TypeOfPilates() {
           <div className="rounded-lg overflow-hidden border border-accent/30 hover:shadow-md transition-all duration-300">
             <div className="h-48 relative">
               <Image
-                src="/placeholder.svg?height=400&width=600&query=pilates mat exercises in bright studio"
+                src="/pilates/mat-pilates.jpeg"
                 alt="Mat Pilates"
                 fill
+                unoptimized
                 className="object-cover"
               />
             </div>
@@ -31,9 +32,10 @@ export default function TypeOfPilates() {
           <div className="rounded-lg overflow-hidden border border-accent/30 hover:shadow-md transition-all duration-300">
             <div className="h-48 relative">
               <Image
-                src="/placeholder.svg?height=400&width=600&query=pilates reformer machine in modern studio"
+                src="/pilates/reformer-pilates.jpeg"
                 alt="Reformer Pilates"
                 fill
+                unoptimized
                 className="object-cover"
               />
             </div>
@@ -49,7 +51,7 @@ export default function TypeOfPilates() {
           <div className="rounded-lg overflow-hidden border border-accent/30 hover:shadow-md transition-all duration-300">
             <div className="h-48 relative">
               <Image
-                src="/placeholder.svg?height=400&width=600&query=pilates equipment studio with various apparatus"
+                src="/pilates/equipment.jpeg"
                 alt="Equipment-Based Pilates"
                 fill
                 className="object-cover"

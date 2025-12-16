@@ -1,7 +1,10 @@
+"use client"
+
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -10,7 +13,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/emma/emma-sunset.jpeg"
-          alt="Emma's Pilates Studio"
+          alt="Emma performing Pilates exercise at sunset beach - Professional Pilates instructor demonstrating form and technique"
           fill
           priority
           className="object-cover scale-125 -translate-x-40 object-center"
@@ -24,7 +27,16 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[70vh]">
             {/* Award Badge - Mobile: Above text, Desktop: Right Side */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative">
+              <motion.div 
+                className="relative"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.3,
+                  ease: [0.21, 0.47, 0.32, 0.98] 
+                }}
+              >
                 {/* Award Badge - Responsive sizes */}
                 <div className="bg-white/95 backdrop-blur-sm rounded-full p-4 sm:p-6 lg:p-8 shadow-xl border-4 border-primary/20 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 flex flex-col items-center justify-center text-center">
                   {" "}
@@ -84,12 +96,21 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Main Content - Mobile: Below badge, Desktop: Left Side */}
             <div className="lg:col-span-7 flex justify-center lg:justify-end">
-              <div className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-12 rounded-lg shadow-xl w-full max-w-lg sm:max-w-xl lg:max-w-2xl">
+              <motion.div 
+                className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-12 rounded-lg shadow-xl w-full max-w-lg sm:max-w-xl lg:max-w-2xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.1,
+                  ease: [0.21, 0.47, 0.32, 0.98] 
+                }}
+              >
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-dark leading-tight">
                     Emma&apos;s Pilates Studio
@@ -111,7 +132,15 @@ export default function Hero() {
                   </div>
 
                   {/* Additional Info - Responsive spacing and sizing */}
-                  <div className="pt-4 sm:pt-6 space-y-2 sm:space-y-3">
+                  <motion.div 
+                    className="pt-4 sm:pt-6 space-y-2 sm:space-y-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: 0.6 
+                    }}
+                  >
                     <div className="space-y-2">
                       <div className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
                         <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-0.5" />
@@ -126,19 +155,27 @@ export default function Hero() {
                         <span>Personalized approach for ages 30-70</span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>{" "}
       {/* Scroll Indicator - Hidden on small screens */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
+      <motion.div 
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden md:block"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 0.8, y: 0 }}
+        transition={{ 
+          duration: 0.6, 
+          delay: 1.2 
+        }}
+      >
         <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center opacity-80 hover:opacity-100 transition-opacity">
           <div className="w-1 h-2 sm:h-3 bg-white rounded-full mt-1.5 sm:mt-2 animate-bounce"></div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
