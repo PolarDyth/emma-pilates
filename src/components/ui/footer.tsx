@@ -25,13 +25,13 @@ export default function Footer() {
                 Home
               </Link>
               <Link
-                href="/about"
+                href="/blog"
                 className="text-white/80 hover:text-secondary transition-colors duration-200"
               >
-                About Emma
+                Emma's blogs
               </Link>
               <Link
-                href="/#classes"
+                href="/services"
                 className="text-white/80 hover:text-secondary transition-colors duration-200"
               >
                 Classes
@@ -41,12 +41,6 @@ export default function Footer() {
                 className="text-white/80 hover:text-secondary transition-colors duration-200"
               >
                 Class Timetable
-              </Link>
-              <Link
-                href="/videos"
-                className="text-white/80 hover:text-secondary transition-colors duration-200"
-              >
-                Video Gallery
               </Link>
               <Link
                 href="/#contact"
@@ -65,14 +59,14 @@ export default function Footer() {
             <p className="text-white/80">
               <span className="font-bold">Email:</span>{" "}
               <Link
-                href="mailto:info@example.com"
+                href="mailto:emmaneilsonpilates@pm.me"
                 className="text-white/80 hover:text-secondary transition-colors duration-200"
               >
-                info@example.com
+                emmaneilsonpilates@pm.me
               </Link>
             </p>
             <p className="text-white/80">
-              <span className="font-bold">Phone:</span> +44 123 456 7890
+              <span className="font-bold">Phone:</span> +44 07789993890
             </p>
           </div>
 
@@ -84,7 +78,7 @@ export default function Footer() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="#"
+                  href="https://www.facebook.com/emmaneilsonpilates"
                   className="text-white/80 hover:text-secondary transition-colors duration-200"
                 >
                   <svg
@@ -109,7 +103,7 @@ export default function Footer() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/emmaneilsonpilates"
                   className="text-white/80 hover:text-secondary transition-colors duration-200"
                 >
                   <svg

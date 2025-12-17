@@ -4,8 +4,16 @@ import { Suspense } from "react";
 import CalendarClient from "@/components/schedule/calendar-client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+import { generateSEOMetadata } from "@/lib/seo-config";
 
 export const revalidate = 3600; // build statically and revalidate hourly (webhook can also tag-revalidate)
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Class Timetable",
+  description: "View our weekly Pilates class schedule. Find the perfect class time for your busy schedule. Book online today.",
+  path: "/timetable",
+});
 
 export default async function TimetablePage() {
     const todayISO = new Date().toISOString().slice(0, 10);
@@ -14,7 +22,7 @@ export default async function TimetablePage() {
     return (
         <main className="min-h-screen py-16 md:py-24">
             <div className="container mx-auto px-4">
-                <CalendarNavigator initialWeekStartISO={todayISO} schedules={schedules} />
+                <CalendarNavigator initialWeekStartISO={todayISO} schedules={schedules} titleAsH1={true} />
 
                 {/* Class Level Info */}
                 <section className="mt-12 md:mt-16">
@@ -89,11 +97,11 @@ export default async function TimetablePage() {
     );
 }
 
-async function CalendarNavigator({ initialWeekStartISO, schedules }: { initialWeekStartISO: string; schedules: ScheduleDocument[] }) {
+async function CalendarNavigator({ initialWeekStartISO, schedules, titleAsH1 }: { initialWeekStartISO: string; schedules: ScheduleDocument[]; titleAsH1?: boolean }) {
     // Server component wrapper that delegates to a client component for navigation
     return (
         <Suspense>
-            <CalendarClient initialWeekStartISO={initialWeekStartISO} schedules={schedules} />
+            <CalendarClient initialWeekStartISO={initialWeekStartISO} schedules={schedules} titleAsH1={titleAsH1} />
         </Suspense>
     );
 }

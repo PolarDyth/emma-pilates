@@ -89,6 +89,7 @@ export function CalendarWeek({
     hideViewToggle = false,
     hideTitle = false,
     hideFilter = false,
+    titleAsH1 = false,
 }: {
     weekStartISO: string;
     events: EventsByDate;
@@ -101,6 +102,7 @@ export function CalendarWeek({
     hideViewToggle?: boolean;
     hideTitle?: boolean;
     hideFilter?: boolean;
+    titleAsH1?: boolean;
 }) {
     const weekStart = isoToUTCDate(weekStartISO);
     const days = Array.from({ length: 7 }, (_, i) => {
@@ -115,6 +117,8 @@ export function CalendarWeek({
         hours.push(`${String(h).padStart(2, '0')}:00`);
     }
 
+    const TitleTag = titleAsH1 ? 'h1' : 'h2';
+
     return (
         <section id="timetable" className="py-16 md:py-24">
             <div className="space-y-6">
@@ -122,7 +126,7 @@ export function CalendarWeek({
                     {!hideTitle && (
                         <div className="space-y-1">
                             <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">Schedule</div>
-                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">Class Timetable</h2>
+                            <TitleTag className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">Class Timetable</TitleTag>
                         </div>
                     )}
                     <div className="flex items-center gap-2">

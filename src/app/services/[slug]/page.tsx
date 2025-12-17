@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import ClassDetailClient from "@/components/services/class-detail-client";
 import { getLevelDisplay } from "@/lib/types/Class";
 
+import { generateSEOMetadata } from "@/lib/seo-config";
+
 interface ClassPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: ClassPageProps): Promise<Meta
   const description = pilatesClass.description 
     || `${pilatesClass.title} - ${getLevelDisplay(pilatesClass.level)} level Pilates class at Emma's Pilates Studio. Duration: ${pilatesClass.duration} minutes.`;
 
-  return {
+  return generateSEOMetadata({
     title: `${pilatesClass.title} | Pilates Classes`,
     description,
     keywords: [
@@ -34,36 +36,9 @@ export async function generateMetadata({ params }: ClassPageProps): Promise<Meta
       pilatesClass.category?.title || "Pilates",
       ...(pilatesClass.benefits || []),
     ],
-    openGraph: {
-      title: `${pilatesClass.title} | Emma's Pilates Studio`,
-      description,
-      type: "website",
-      url: `https://emmaspilatesstudio.com/services/${pageParams.slug}`,
-      images: pilatesClass.image ? [
-        {
-          url: pilatesClass.image.asset.url,
-          width: 1200,
-          height: 630,
-          alt: pilatesClass.image.alt || pilatesClass.title,
-        },
-      ] : [
-        {
-          url: "/pilates/group-standing-up.jpeg",
-          width: 1200,
-          height: 630,
-          alt: `${pilatesClass.title} - Pilates class at Emma's Studio`,
-        },
-      ],
-    },
-    twitter: {
-      title: `${pilatesClass.title} | Emma's Pilates Studio`,
-      description,
-      images: pilatesClass.image ? [pilatesClass.image.asset.url] : ["/pilates/group-standing-up.jpeg"],
-    },
-    alternates: {
-      canonical: `https://emmaspilatesstudio.com/services/${pageParams.slug}`,
-    },
-  };
+    image: pilatesClass.image?.asset.url,
+    path: `/services/${pageParams.slug}`,
+  });
 }
 
 // Generate static paths for all classes
