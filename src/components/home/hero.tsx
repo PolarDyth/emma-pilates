@@ -16,7 +16,7 @@ export default function Hero() {
           alt="Emma performing Pilates exercise at sunset beach - Professional Pilates instructor demonstrating form and technique"
           fill
           priority
-          className="object-cover scale-125 -translate-x-40 object-center"
+          className="object-cover object-center sm:scale-125 sm:-translate-x-40"
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30 sm:bg-black/20"></div>

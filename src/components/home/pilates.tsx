@@ -9,8 +9,7 @@ export default function Pilates() {
       id="what-is-pilates"
       className="py-16 md:py-24 bg-gradient-to-b from-white to-accent/20"
     >
-      <div className="mx-10 md:mx-0">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div>
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -36,7 +35,6 @@ export default function Pilates() {
         <AnimatedSection delay={0.3}>
           <TypeOfPilates />
         </AnimatedSection>
-      </div>
       </div>
     </section>
   );

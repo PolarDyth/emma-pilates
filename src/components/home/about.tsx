@@ -3,8 +3,8 @@ import { ChevronRight } from "lucide-react";
 
 export default function AboutHome() {
   return (
-    <section id="about" className="py-16 md:py-24 mx-10 md:mx-0">
-      <div className="container mx-auto">
+    <section id="about" className="py-16 md:py-24">
+      <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="relative h-[600px] rounded-lg overflow-hidden">

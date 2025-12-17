@@ -1,15 +1,29 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { CalendarWeek } from "@/components/schedule/timetable";
 import type { EventsByDate, ScheduleDocument } from "@/lib/types/Schedule";
 import { generateWeekEvents } from "@/lib/schedule-utils";
 
-export default function CalendarClient({ initialWeekStartISO, schedules }: { initialWeekStartISO: string; schedules: ScheduleDocument[] }) {
+export default function CalendarClient({ 
+    initialWeekStartISO, 
+    schedules,
+    initialViewMode = "weekly",
+    hideViewToggle = false,
+    hideTitle = false,
+    hideFilter = false,
+}: { 
+    initialWeekStartISO: string; 
+    schedules: ScheduleDocument[];
+    initialViewMode?: "weekly" | "daily";
+    hideViewToggle?: boolean;
+    hideTitle?: boolean;
+    hideFilter?: boolean;
+}) {
     const initial = generateWeekEvents(schedules, initialWeekStartISO);
     const [weekStartISO, setWeekStartISO] = useState(initial.weekStartISO);
     const [events, setEvents] = useState<EventsByDate>(initial.events);
-    const [viewMode, setViewMode] = useState<"weekly" | "daily">("weekly");
+    const [viewMode, setViewMode] = useState<"weekly" | "daily">(initialViewMode);
     const [selectedDayIndex, setSelectedDayIndex] = useState(() => {
         // Map initial date (today) to day index in the computed week
         const [y, m, d] = initialWeekStartISO.split("-").map(Number);
@@ -21,6 +35,13 @@ export default function CalendarClient({ initialWeekStartISO, schedules }: { ini
         return Math.max(0, Math.min(6, idx));
     });
     const [isPending, startTransition] = useTransition();
+
+    useEffect(() => {
+        // Default to daily view on mobile devices (< 768px)
+        if (window.innerWidth < 768) {
+            setViewMode("daily");
+        }
+    }, []);
 
     const addDays = (iso: string, days: number): string => {
         const [y, m, d] = iso.split("-").map(Number);
@@ -81,6 +102,9 @@ export default function CalendarClient({ initialWeekStartISO, schedules }: { ini
                 onSetViewMode={setViewMode}
                 selectedDayIndex={selectedDayIndex}
                 onSelectDayIndex={setSelectedDayIndex}
+                hideViewToggle={hideViewToggle}
+                hideTitle={hideTitle}
+                hideFilter={hideFilter}
             />
         </div>
     );

@@ -4,8 +4,7 @@ import ContactForm from "../ui/contact-form";
 export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-24">
-      <div className="mx-10 md:mx-0">
-        <div className="container mx-auto">
+      <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <div className="space-y-6">
@@ -70,7 +69,6 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
