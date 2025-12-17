@@ -24,7 +24,7 @@ export default function Contact() {
                     <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-medium">Phone</h3>
-                      <p className="text-muted-foreground">+44 123 456 7890</p>
+                      <p className="text-muted-foreground">+44 07789993890</p>
                     </div>
                   </div>
 
@@ -33,7 +33,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-medium">Email</h3>
                       <p className="text-muted-foreground">
-                        example@example.com
+                        emmaneilsonpilates@pm.me
                       </p>
                     </div>
                   </div>
@@ -43,20 +43,6 @@ export default function Contact() {
                     <div>
                       <h3 className="font-medium">Studio Location</h3>
                       <p className="text-muted-foreground">Edinburgh, UK</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-medium">Office Hours</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Friday: 8:30 AM - 8:30 PM
-                      </p>
-                      <p className="text-muted-foreground">
-                        Saturday: 9:00 AM - 2:00 PM
-                      </p>
-                      <p className="text-muted-foreground">Sunday: Closed</p>
                     </div>
                   </div>
                 </div>

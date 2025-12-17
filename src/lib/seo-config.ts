@@ -2,11 +2,11 @@ export const seoConfig = {
   // Base site configuration
   domain: "emmaneilsonpilates.co.uk",
   url: "https://www.emmaneilsonpilates.co.uk/",
-  siteName: "Emma's Neilson Pilates",
+  siteName: "Emma Neilson Pilates",
 
   // Default metadata
   defaultTitle:
-    "Emma's Neilson Pilates | Expert Pilates Instruction for All Ages",
+    "Emma Neilson Pilates | Expert Pilates Instruction for All Ages",
   defaultDescription:
     "Transform your body and mind with expert Pilates instruction in a welcoming studio environment. Group classes, private sessions, and corporate packages available. Serving ages 30-70 with personalized approach.",
 
@@ -39,7 +39,7 @@ export const seoConfig = {
 
   // Business info
   business: {
-    name: "Emma's Neilson Pilates",
+    name: "Emma Neilson Pilates",
     phone: "+44 07789993890", // Add actual phone
     email: "emmaneilsonpilates@pm.me", // Add actual email
     foundingDate: "2020",

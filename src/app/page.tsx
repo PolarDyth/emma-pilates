@@ -12,7 +12,6 @@ import { getSchedules } from "@/lib/schedule-service";
 import { generateSEOMetadata } from "@/lib/seo-config";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Home",
   description: "Welcome to Emma's Pilates Studio - Transform your body and mind with expert Pilates instruction. Offering group classes, private sessions, and corporate wellness programs for all ages and abilities.",
 });
 
