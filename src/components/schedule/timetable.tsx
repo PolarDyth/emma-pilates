@@ -86,6 +86,9 @@ export function CalendarWeek({
     onSetViewMode,
     selectedDayIndex = 0,
     onSelectDayIndex,
+    hideViewToggle = false,
+    hideTitle = false,
+    hideFilter = false,
 }: {
     weekStartISO: string;
     events: EventsByDate;
@@ -95,6 +98,9 @@ export function CalendarWeek({
     onSetViewMode?: (mode: "weekly" | "daily") => void;
     selectedDayIndex?: number;
     onSelectDayIndex?: (index: number) => void;
+    hideViewToggle?: boolean;
+    hideTitle?: boolean;
+    hideFilter?: boolean;
 }) {
     const weekStart = isoToUTCDate(weekStartISO);
     const days = Array.from({ length: 7 }, (_, i) => {
@@ -112,11 +118,13 @@ export function CalendarWeek({
     return (
         <section id="timetable" className="py-16 md:py-24">
             <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                        <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">Schedule</div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">Class Timetable</h2>
-                    </div>
+                <div className={`flex items-center ${hideTitle ? 'justify-end' : 'justify-between'}`}>
+                    {!hideTitle && (
+                        <div className="space-y-1">
+                            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">Schedule</div>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">Class Timetable</h2>
+                        </div>
+                    )}
                     <div className="flex items-center gap-2">
                         <Button variant="outline" size="icon" onClick={onPrev} aria-label="Previous week">
                             <ChevronLeft className="h-4 w-4" />
@@ -124,19 +132,23 @@ export function CalendarWeek({
                         <Button variant="outline" size="icon" onClick={onNext} aria-label="Next week">
                             <ChevronRight className="h-4 w-4" />
                         </Button>
-                        <Button variant="outline" className="ml-2">
-                            <SlidersHorizontal className="h-4 w-4 mr-2" /> Filter Classes
-                        </Button>
+                        {!hideFilter && (
+                            <Button variant="outline" className="ml-2">
+                                <SlidersHorizontal className="h-4 w-4 mr-2" /> Filter Classes
+                            </Button>
+                        )}
                     </div>
                 </div>
 
                 <div className="bg-card text-card-foreground rounded-xl border shadow-sm overflow-hidden">
                     <div className="px-4 py-3 flex items-center justify-between border-b">
                         <div className="text-lg font-semibold">{monthLabel(weekStart)}</div>
-                        <div className="flex gap-2 text-sm">
-                            <Button variant={viewMode === 'weekly' ? "default" : "outline"} onClick={() => onSetViewMode && onSetViewMode('weekly')}>Weekly View</Button>
-                            <Button variant={viewMode === 'daily' ? "default" : "outline"} onClick={() => onSetViewMode && onSetViewMode('daily')}>Daily View</Button>
-                        </div>
+                        {!hideViewToggle && (
+                            <div className="flex gap-2 text-sm">
+                                <Button variant={viewMode === 'weekly' ? "default" : "outline"} onClick={() => onSetViewMode && onSetViewMode('weekly')}>Weekly View</Button>
+                                <Button variant={viewMode === 'daily' ? "default" : "outline"} onClick={() => onSetViewMode && onSetViewMode('daily')}>Daily View</Button>
+                            </div>
+                        )}
                     </div>
                     {viewMode === 'daily' && (
                         <div className="px-4 py-2 border-b overflow-x-auto">

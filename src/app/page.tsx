@@ -8,6 +8,7 @@ import Testimonials from "@/components/home/testimonials";
 import Timetable from "@/components/home/timetable";
 import AnimatedSection from "@/components/ui/animated-section";
 import { getClasses } from "@/lib/class-service";
+import { getSchedules } from "@/lib/schedule-service";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -36,6 +37,9 @@ export default async function Page() {
   // Fetch the first 3 classes for the homepage
   const allClasses = await getClasses();
   const featuredClasses = allClasses.slice(0, 3);
+  
+  // Fetch schedules for the timetable
+  const schedules = await getSchedules();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -48,7 +52,7 @@ export default async function Page() {
         <Services classes={featuredClasses} />
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
-        <Timetable />
+        <Timetable schedules={schedules} />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <Contact />

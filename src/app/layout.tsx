@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 import { Toaster } from "@/components/ui/sonner";
+import LocalBusinessSchema from "@/components/seo/local-business-schema";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     canonical: 'https://emmaspilatesstudio.com',
   },
   other: {
-    'google-site-verification': 'your-google-verification-code', // Add your verification code
+    'google-site-verification': 'google956a0e6a4a8aef6d.html', // Add your verification code
   },
 };
 
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
+        <LocalBusinessSchema />
         <Toaster />
         <ClientLayout>{children}</ClientLayout>
       </body>

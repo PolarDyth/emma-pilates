@@ -3,8 +3,7 @@ import Image from "next/image";
 export default function Testimonials() {
   return (
     <section className="py-16 md:py-24 bg-accent/30">
-      <div className="mx-10 md:mx-0">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div>
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
@@ -135,7 +134,6 @@ export default function Testimonials() {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

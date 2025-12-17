@@ -20,8 +20,7 @@ interface ServicesProps {
 export default function Services({ classes }: ServicesProps) {
   return (
     <section id="classes" className="py-16 md:py-24 bg-accent/30">
-      <div className="mx-10 md:mx-0">
-        <div className="container mx-auto">
+      <div className="container mx-auto px-4">
           <div>
             <AnimatedSection>
               <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -147,7 +146,6 @@ export default function Services({ classes }: ServicesProps) {
               </div>
             </AnimatedSection>
           </div>
-        </div>
       </div>
     </section>
   );
