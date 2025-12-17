@@ -12,6 +12,7 @@ export default function CalendarClient({
     hideViewToggle = false,
     hideTitle = false,
     hideFilter = false,
+    titleAsH1 = false,
 }: { 
     initialWeekStartISO: string; 
     schedules: ScheduleDocument[];
@@ -19,6 +20,7 @@ export default function CalendarClient({
     hideViewToggle?: boolean;
     hideTitle?: boolean;
     hideFilter?: boolean;
+    titleAsH1?: boolean;
 }) {
     const initial = generateWeekEvents(schedules, initialWeekStartISO);
     const [weekStartISO, setWeekStartISO] = useState(initial.weekStartISO);
@@ -105,6 +107,7 @@ export default function CalendarClient({
                 hideViewToggle={hideViewToggle}
                 hideTitle={hideTitle}
                 hideFilter={hideFilter}
+                titleAsH1={titleAsH1}
             />
         </div>
     );

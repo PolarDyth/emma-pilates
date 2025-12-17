@@ -4,20 +4,21 @@ import "./globals.css";
 import ClientLayout from "./client-layout";
 import { Toaster } from "@/components/ui/sonner";
 import LocalBusinessSchema from "@/components/seo/local-business-schema";
+import { seoConfig } from "@/lib/seo-config";
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://emmaspilatesstudio.com'), // Replace with your actual domain
+  metadataBase: new URL(seoConfig.url),
   title: {
-    default: "Emma's Pilates Studio | Expert Pilates Instruction for All Ages",
-    template: "%s | Emma's Pilates Studio"
+    default: seoConfig.defaultTitle,
+    template: `%s | ${seoConfig.siteName}`
   },
-  description: "Transform your body and mind with expert Pilates instruction in a welcoming studio environment. Group classes, private sessions, and corporate packages available. Serving ages 30-70 with personalized approach.",
-  keywords: ["Pilates", "Pilates Studio", "Group Classes", "Private Sessions", "Fitness", "Wellness", "Core Strength", "Flexibility", "Posture", "Corporate Wellness", "Emma", "Certified Trainer"],
-  authors: [{ name: "Emma", url: "https://emmaspilatesstudio.com" }],
-  creator: "Emma's Pilates Studio",
-  publisher: "Emma's Pilates Studio",
+  description: seoConfig.defaultDescription,
+  keywords: seoConfig.keywords,
+  authors: [{ name: "Emma", url: seoConfig.url }],
+  creator: seoConfig.siteName,
+  publisher: seoConfig.siteName,
   robots: {
     index: true,
     follow: true,
@@ -31,32 +32,32 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://emmaspilatesstudio.com',
-    title: "Emma's Pilates Studio | Expert Pilates Instruction for All Ages",
-    description: "Transform your body and mind with expert Pilates instruction. Group classes, private sessions, and corporate packages. 12+ years experience serving ages 30-70.",
-    siteName: "Emma's Pilates Studio",
+    locale: 'en_GB',
+    url: seoConfig.url,
+    title: seoConfig.defaultTitle,
+    description: seoConfig.defaultDescription,
+    siteName: seoConfig.siteName,
     images: [
       {
-        url: '/emma/emma-sunset.jpeg',
+        url: seoConfig.defaultImages.og,
         width: 1200,
         height: 630,
-        alt: 'Emma performing Pilates exercise at sunset - Expert Pilates Instructor',
+        alt: `${seoConfig.siteName} - Expert Pilates Instructor`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Emma's Pilates Studio | Expert Pilates Instruction",
-    description: "Transform your body and mind with expert Pilates instruction. Group classes, private sessions, and corporate packages available.",
-    images: ['/emma/emma-sunset.jpeg'],
-    creator: '@emmaspilates', // Replace with actual Twitter handle
+    title: seoConfig.defaultTitle,
+    description: seoConfig.defaultDescription,
+    images: [seoConfig.defaultImages.twitter],
+    creator: '@emmaneilsonpilates', 
   },
   alternates: {
-    canonical: 'https://emmaspilatesstudio.com',
+    canonical: seoConfig.url,
   },
   other: {
-    'google-site-verification': 'google956a0e6a4a8aef6d.html', // Add your verification code
+    'google-site-verification': 'your-google-verification-code', // Replace with actual code
   },
 };
 
@@ -68,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://emmaspilatesstudio.com" />
+        <link rel="canonical" href={seoConfig.url} />
       </head>
       <body
         className={`${inter.className} antialiased`}

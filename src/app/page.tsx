@@ -9,29 +9,12 @@ import Timetable from "@/components/home/timetable";
 import AnimatedSection from "@/components/ui/animated-section";
 import { getClasses } from "@/lib/class-service";
 import { getSchedules } from "@/lib/schedule-service";
+import { generateSEOMetadata } from "@/lib/seo-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "Home",
   description: "Welcome to Emma's Pilates Studio - Transform your body and mind with expert Pilates instruction. Offering group classes, private sessions, and corporate wellness programs for all ages and abilities.",
-  keywords: ["Pilates classes", "Pilates studio", "fitness", "wellness", "core strength", "flexibility", "posture improvement", "group classes", "private training"],
-  openGraph: {
-    title: "Emma's Pilates Studio | Transform Your Body & Mind",
-    description: "Expert Pilates instruction with 12+ years experience. Small group classes, private sessions, and corporate wellness programs. Perfect for ages 30-70.",
-    images: [
-      {
-        url: "/emma/emma-sunset.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Emma performing Pilates exercise at sunset - Expert Pilates instruction",
-      },
-    ],
-  },
-  twitter: {
-    title: "Emma's Pilates Studio | Transform Your Body & Mind",
-    description: "Expert Pilates instruction with 12+ years experience. Small group classes, private sessions, and corporate wellness programs.",
-    images: ["/emma/emma-sunset.jpeg"],
-  },
-};
+});
 
 export default async function Page() {
   // Fetch the first 3 classes for the homepage

@@ -4,6 +4,8 @@ import { getBlogPostBySlug } from "@/lib/blog-service";
 import { notFound } from "next/navigation";
 import BlogPostClient from "@/components/blog/blogPage/blog-post-client";
 
+import { generateSEOMetadata } from "@/lib/seo-config";
+
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -20,52 +22,14 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const publishedDate = new Date(post.publishedAt).toISOString();
-
-  return {
+  return generateSEOMetadata({
     title: post.title,
     description: post.excerpt || `${post.title} - Expert Pilates guidance and wellness tips from Emma's Pilates Studio.`,
-    keywords: post.tags ? post.tags.join(", ") : ["Pilates", "wellness", "fitness", "health"],
-    authors: [{ name: "Emma", url: "https://emmaspilatesstudio.com" }],
-    openGraph: {
-      title: post.title,
-      description: post.excerpt || `Expert Pilates guidance: ${post.title}`,
-      type: "article",
-      url: `https://emmaspilatesstudio.com/blog/${pageParams.slug}`,
-      images: post.mainImage ? [
-        {
-          url: post.mainImage.asset.url,
-          width: 1200,
-          height: 630,
-          alt: post.mainImage.alt || post.title,
-        },
-      ] : [
-        {
-          url: "/pilates/group-standing-up.jpeg",
-          width: 1200,
-          height: 630,
-          alt: `${post.title} - Pilates guidance from Emma's Studio`,
-        },
-      ],
-      publishedTime: publishedDate,
-      section: post.category?.title || "Pilates",
-      tags: post.tags || ["Pilates", "Wellness"],
-    },
-    twitter: {
-      title: post.title,
-      description: post.excerpt || `Expert Pilates guidance: ${post.title}`,
-      images: post.mainImage ? [post.mainImage.asset.url] : ["/pilates/group-standing-up.jpeg"],
-    },
-    alternates: {
-      canonical: `https://emmaspilatesstudio.com/blog/${pageParams.slug}`,
-    },
-    other: {
-      "article:published_time": publishedDate,
-      "article:author": "Emma",
-      "article:section": post.category?.title || "Pilates",
-      "article:tag": post.tags?.join(",") || "Pilates,Wellness",
-    },
-  };
+    keywords: post.tags,
+    image: post.mainImage?.asset.url,
+    path: `/blog/${pageParams.slug}`,
+    type: "article",
+  });
 }
 
 // Generate static paths for all blog posts

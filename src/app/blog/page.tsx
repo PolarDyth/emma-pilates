@@ -1,29 +1,15 @@
 import { Metadata } from "next";
 import BlogPageClient from "@/components/blog/blogClientPage";
 import { getBlogPosts, getCategories } from "@/lib/blog-service";
+import { generateSEOMetadata } from "@/lib/seo-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "Pilates Blog & Wellness Tips",
   description: "Expert Pilates insights, wellness tips, and fitness guidance from Emma's Pilates Studio. Discover beginner techniques, advanced practices, and health benefits of Pilates training.",
   keywords: ["Pilates blog", "Pilates tips", "wellness advice", "fitness guidance", "Pilates techniques", "core strength", "flexibility training", "posture improvement", "Pilates benefits"],
-  openGraph: {
-    title: "Pilates Blog & Wellness Tips | Emma's Pilates Studio",
-    description: "Expert Pilates insights and wellness tips. Learn techniques, discover benefits, and get professional guidance for your Pilates journey.",
-    images: [
-      {
-        url: "/pilates/group-standing-up.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Pilates group class - Professional Pilates instruction and guidance",
-      },
-    ],
-  },
-  twitter: {
-    title: "Pilates Blog & Wellness Tips | Emma's Pilates Studio",
-    description: "Expert Pilates insights and wellness tips. Learn techniques, discover benefits, and get professional guidance.",
-    images: ["/pilates/group-standing-up.jpeg"],
-  },
-};
+  image: "/pilates/group-standing-up.jpeg",
+  path: "/blog",
+});
 
 export default async function BlogPage() {
   // Fetch all posts and categories at build time
