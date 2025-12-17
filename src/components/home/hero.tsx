@@ -113,7 +113,7 @@ export default function Hero() {
               >
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-dark leading-tight">
-                    Emma&apos;s Pilates Studio
+                    Emma Neilson Pilates
                   </h1>
 
                   <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed">
