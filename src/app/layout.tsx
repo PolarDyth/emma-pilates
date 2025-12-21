@@ -5,6 +5,7 @@ import ClientLayout from "./client-layout";
 import { Toaster } from "@/components/ui/sonner";
 import LocalBusinessSchema from "@/components/seo/local-business-schema";
 import { seoConfig } from "@/lib/seo-config";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -56,9 +57,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: seoConfig.url,
   },
-  other: {
-    'google-site-verification': 'your-google-verification-code', // Replace with actual code
-  },
 };
 
 export default function RootLayout({
@@ -76,6 +74,7 @@ export default function RootLayout({
       >
         <LocalBusinessSchema />
         <Toaster />
+        <Analytics />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

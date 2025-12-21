@@ -16,7 +16,7 @@ export default function ClientLayout({
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
-    <main>
+    <>
       {/* Header */}
       <header className="sticky top-0 z-50 mx-auto w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -171,16 +171,16 @@ export default function ClientLayout({
           )}        </AnimatePresence>
       </header>
 
-      <div
+      <main
         className="relative z-0"
         onClick={() => mobileMenuOpen && setMobileMenuOpen(false)}
       >
         {children}
-      </div>
+      </main>
 
       {/* Footer */}
       <Footer />
-    </main>
+    </>
   )
 }
 
